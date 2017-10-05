@@ -4,7 +4,8 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
        name="youbot" >
-  
+
+  <xacro:arg name="robot_name" default="arm"/>
   <!-- The following included files set up definitions of parts of the robot body -->
   <!-- misc common stuff? -->
   <xacro:include filename="$(find youbot_description)/urdf/common.xacro" />
@@ -40,11 +41,11 @@
     </inertial>
   </link>
   
-  <xacro:youbot_arm name="arm" parent="base_link">
+  <xacro:youbot_arm name="$(arg robot_name)" parent="base_link">
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:youbot_arm>
 
-  <xacro:youbot_gripper name="gripper" parent="arm_link_5">
+  <xacro:youbot_gripper name="gripper" parent="$(arg robot_name)_link_5">
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:youbot_gripper>
 

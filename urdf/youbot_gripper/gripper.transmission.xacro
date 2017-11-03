@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-       xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 	<xacro:macro name="youbot_gripper_transmission" params="name">
 
@@ -14,7 +11,7 @@
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 			<joint name="${name}_finger_joint_l">
-				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 			</joint>
 		</transmission>
 
@@ -25,7 +22,7 @@
 				<mechanicalReduction>1</mechanicalReduction>
 			</actuator>
 			<joint name="${name}_finger_joint_r">
-				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
 			</joint>
 		</transmission>
 

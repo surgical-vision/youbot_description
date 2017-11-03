@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
-<robot  xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
-        xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
-        xmlns:xacro="http://ros.org/wiki/xacro">
+<robot  xmlns:xacro="http://ros.org/wiki/xacro">
 
 	<xacro:include filename="$(find youbot_description)/urdf/youbot_arm/arm.gazebo.xacro" />
 	<xacro:include filename="$(find youbot_description)/urdf/youbot_arm/arm.transmission.xacro" />
@@ -13,7 +10,7 @@
 
 		<!-- joint between base_link and arm_0_link -->
 		<joint name="${name}_joint_0" type="fixed" >
-			<insert_block name="origin" />
+			<xacro:insert_block name="origin" />
 			<parent link="${parent}" />
 			<child link="${name}_link_0" />
 			
@@ -239,6 +236,15 @@
 				</geometry>
 			</collision>
 		</link>
+		
+        <joint name="${name}_joint_ee" type="fixed">
+          <parent link="${name}_link_5"/>
+          <child link="${name}_link_ee"/>
+          <origin xyz="0 0 0.045" rpy="0 0 0"/>
+        </joint>
+
+        <link name="${name}_link_ee">
+        </link>
 
 		<!-- extensions -->
 		<xacro:youbot_arm_gazebo name="${name}" />

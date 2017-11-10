@@ -39,7 +39,7 @@
   </link>
   
   <xacro:youbot_arm name="$(arg robot_name)" parent="base_link">
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="-0.024 0 0.030" rpy="0 0 0" />
   </xacro:youbot_arm>
 
   <xacro:youbot_gripper name="gripper" parent="$(arg robot_name)_link_5">
